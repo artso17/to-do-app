@@ -1,0 +1,11 @@
+
+<title>
+    {{judul}}
+</title>
+<h1>{{judul}}</h1>
+<h2>Are you Sure want to delete "{{task.judul}}"?</h2>
+<a href="{% url 'home' %}">Cancel</a>
+<form action="" method="POST">
+    {% csrf_token %}
+    <input type="submit" name="Confirm">
+</form>

@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+    {{judul}}
+{% endblock title %}
+    
+
+
+{% block content %}
+
+    <div class="container bg-light">
+        <div class="row">
+            <div class="col">
+
+                <center><h1>{{judul}}</h1></center>
+
+    <form method="POST">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col">
+                {{taskforms.judul}}
+            </div>
+            <div class="d-grid gap-2">
+                <button class="btn btn-primary" type="submit">Submit</button>
+              </div>
+
+        </div>
+    </form>
+
+    
+    {% for task in tasks %}
+        
+        {% if task.is_completed == True %}
+        <div class="row">
+            <div class="col">
+                <h3><strike>{{task.judul}}</strike></h3>
+
+            </div>
+            <div class="col">
+                <a href="{% url 'delete' task.id %}" class="btn btn-danger">Delete</a>
+                <a href="{% url 'update' task.id %}" class="btn btn-warning">Update</a>
+                
+            </div>
+
+        </div>
+        
+        {% else %}
+            <div class="row">
+                <div class="col">
+                    <h3>{{task.judul}}</h3>
+
+                </div>
+                <div class="col">
+                    <a href="{% url 'delete' task.id %}" class="btn btn-danger">Delete</a>
+                    <a href="{% url 'update' task.id %}" class="btn btn-warning">Update</a>
+
+                </div>
+            </div>
+        {% endif %}
+            
+
+        
+    {% endfor %}
+
+            </div>
+        </div>
+    </div>
+
+    
+        
+
+{% endblock content %}
+    

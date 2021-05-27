@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+    {{judul}}
+{% endblock title %}
+    
+
+
+{% block content %}
+    <div class="container bg-light">
+        <div class="row">
+            <div class="col">
+                <h1>{{judul}}</h1>
+
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col">
+                            {{taskforms}}
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-primary mb-2" type="submit">Update</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+
+{% endblock content %}
+    
